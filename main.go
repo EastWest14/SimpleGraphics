@@ -1,14 +1,23 @@
 package main
 
 import (
-	"fmt"
-
+	"SimpleGraphics/camera"
 	"SimpleGraphics/renderer"
+	"SimpleGraphics/scene"
+	"fmt"
 )
 
 func main() {
+	aScene := scene.NewScene()
+	aCamera := camera.NewCamera(aScene)
 	aRenderer := renderer.NewRenderer()
-	err := aRenderer.Render("image.png", nil)
+
+	bitmap, err := aCamera.Snapshot()
+	if err != nil {
+		panic(err.Error())
+	}
+
+	err = aRenderer.Render("image.png", bitmap)
 	if err != nil {
 		panic(err.Error())
 	}
