@@ -5,10 +5,23 @@ import (
 )
 
 func TestNewBitmap(t *testing.T) {
-	/*bm := NewBitmap()
+	bm := NewBitmap()
 	if bm == nil {
 		t.Errorf("Failed to initialize Bitmap.")
-	}*/
+	}
+}
+
+func TestHeightWidth(t *testing.T) {
+	bm := NewBitmap()
+	height := bm.Height()
+	width := bm.Width()
+
+	if height != 256 {
+		t.Errorf("Expected height to be %d, got %d", 256, height)
+	}
+	if width != 256 {
+		t.Errorf("Expected width to be %d, got %d", 256, width)
+	}
 }
 
 func TestPixelAtSetGet(t *testing.T) {

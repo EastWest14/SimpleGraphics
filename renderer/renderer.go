@@ -9,10 +9,6 @@ import (
 	"io/ioutil"
 )
 
-const (
-	IMAGE_SIZE = 256
-)
-
 type Renderer struct {
 }
 
@@ -35,9 +31,9 @@ func (r *Renderer) Render(filename string, bitmap *bitmap.Bitmap) error {
 }
 
 func createImage(bitmap *bitmap.Bitmap) ([]byte, error) {
-	m := image.NewRGBA(image.Rect(0, 0, IMAGE_SIZE, IMAGE_SIZE))
-	for y := 0; y < IMAGE_SIZE; y++ {
-		for x := 0; x < IMAGE_SIZE; x++ {
+	m := image.NewRGBA(image.Rect(0, 0, bitmap.Width(), bitmap.Height()))
+	for y := 0; y < bitmap.Height(); y++ {
+		for x := 0; x < bitmap.Width(); x++ {
 			pixel := bitmap.PixelAt(x, y)
 			m.Set(x, y, color.RGBA{pixel.Red(), pixel.Green(), pixel.Blue(), 255})
 		}

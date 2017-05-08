@@ -19,6 +19,14 @@ func NewBitmap() *Bitmap {
 	return bm
 }
 
+func (b *Bitmap) Height() int {
+	return IMAGE_SIZE
+}
+
+func (b *Bitmap) Width() int {
+	return IMAGE_SIZE
+}
+
 func (b *Bitmap) PixelAt(x, y int) Pixel {
 	return b.pixels[x][y]
 }
